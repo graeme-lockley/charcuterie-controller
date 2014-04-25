@@ -12,3 +12,12 @@
 
     - name: Upgrade all of the installed components
       apt: upgrade=dist
+
+    - name: Install lynx
+      apt: pkg=lynx
+
+    - name: Install ruby
+      apt: pkg=ruby
+
+    - name: Install bundle
+      raw: sudo gem install bundler
