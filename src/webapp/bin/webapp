@@ -15,12 +15,12 @@
 case "$1" in 
     start)
         echo "Starting webapp"
-        cd /home/pi/webapp/app
-	ruby lib/webapp.rb
+        cd /home/pi/webapp/app/bin
+	./webapp.d &
         ;;
     stop)
         echo "Stopping webapp"
-        killall webapp
+        killall -g webapp.d
         ;;
     *)
         echo "Usage: /etc/init.d/webapp start|stop"
