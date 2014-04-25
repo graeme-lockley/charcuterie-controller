@@ -42,8 +42,8 @@ class ThingyTest < Test::Unit::TestCase
   end
 
   def test_that_the_map_was_properly_calculated
-    for id in 1..6
+    (1..6).each { |id|
       assert_equal(id, CCModel::Thingy.instance[id].id)
-    end
+    }
   end
 end
