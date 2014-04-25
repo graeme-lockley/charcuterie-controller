@@ -4,10 +4,11 @@ require '../lib/ccmodel'
 class ProbeTest < Test::Unit::TestCase
 
   def setup
-    @probe = CCModel::Probe.new('Test Probe')
+    @probe = CCModel::Probe.new(1, 'Test Probe')
   end
 
   def test_should_give_me_the_passed_name
+    assert_equal(1, @probe.id)
     assert_equal('Test Probe', @probe.name)
   end
 end
@@ -38,5 +39,11 @@ class ThingyTest < Test::Unit::TestCase
     assert_equal('Fridge Humidity', @containers[0].elements[2].elements[1].name)
     assert_equal(80, @containers[0].elements[2].elements[1].mid)
     assert_equal(10, @containers[0].elements[2].elements[1].variance)
+  end
+
+  def test_that_the_map_was_properly_calculated
+    for id in 1..6
+      assert_equal(id, CCModel::Thingy.instance[id].id)
+    end
   end
 end
