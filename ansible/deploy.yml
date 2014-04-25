@@ -5,7 +5,7 @@
 
   tasks:
     - name: Shutdown the webapp
-      raw: echo Hello World
+      service: name=webapp state=stopped
 
     - name: Remove the current deployed webapp
       file: path=/home/pi/webapp/app state=absent
@@ -22,11 +22,23 @@
     - name: Copy the webapp into its target location
       raw: cp -R /home/pi/tmp/src/webapp/* /home/pi/webapp/app
 
+    - name: Copy the webapp service into its target location
+      raw: cp /home/pi/tmp/src/webapp/bin/webapp /etc/init.d
+
+    - name: Set execute privilages on the webapp service
+      raw: chmod 755 /etc/init.d/webapp
+
+    - name: Change the owner of the webapp service to root
+      raw: chown root /etc/init.d/webapp
+
+    - name: Change the group of the webapp service to root
+      raw: chgrp root /etc/init.d/webapp
+
     - name: Change the directory owner
-      shell: chdir=/home/pi/webapp sudo chown -R pi *
+      shell: chdir=/home/pi/webapp sudo chown -R pi . *
 
     - name: Change the directory group
-      shell: chdir=/home/pi/webapp sudo chgrp -R pi *
+      shell: chdir=/home/pi/webapp sudo chgrp -R pi . *
 
     - name: Install all of the require gems
       sudo: no
@@ -34,3 +46,6 @@
 
     - name: Remove tmp directory
       file: path=/home/pi/tmp state=absent
+
+    - name: Start the webapp
+      service: name=webapp state=started
