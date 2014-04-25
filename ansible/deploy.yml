@@ -5,7 +5,7 @@
 
   tasks:
     - name: Shutdown the webapp
-      service: name=webapp state=stopped
+      service: name=webapp state=stopped pattern="webapp.d"
       ignore_errors: yes
 
     - name: Remove the current deployed webapp
@@ -35,13 +35,13 @@
     - name: Change the group of the webapp service to root
       raw: chgrp root /etc/init.d/webapp
 
-    - name: Change the directory owner
+    - name: Change the webapp directory owner
       shell: chdir=/home/pi/webapp sudo chown -R pi . *
 
-    - name: Change the directory group
+    - name: Change the webapp directory group
       shell: chdir=/home/pi/webapp sudo chgrp -R pi . *
 
-    - name: Install all of the require gems
+    - name: Install all of the required webapp gems
       sudo: no
       shell: chdir=/home/pi/webapp/app bundle install
 
@@ -49,7 +49,4 @@
       file: path=/home/pi/tmp state=absent
 
     - name: Start the webapp
-      service: name=webapp state=started
-
-    - name: Update init to automatically start webapp on reboot
-      raw: update-rc.d /etc/init.d/webapp defaults
+      service: name=webapp state=restarted enabled=yes pattern="webapp.d"

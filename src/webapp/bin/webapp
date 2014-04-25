@@ -20,7 +20,7 @@ case "$1" in
         ;;
     stop)
         echo "Stopping webapp"
-        killall -g webapp.d
+        killall -g -w webapp.d
         ;;
     *)
         echo "Usage: /etc/init.d/webapp start|stop"
