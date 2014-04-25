@@ -1,0 +1,14 @@
+---
+- hosts: all
+  remote_user: pi
+  sudo: yes
+
+  tasks:
+    - name: Install python-apt
+      raw: sudo apt-get install python-apt -y
+
+    - name: Update apt
+      apt: update_cache=yes
+
+    - name: Upgrade all of the installed components
+      apt: upgrade=dist
