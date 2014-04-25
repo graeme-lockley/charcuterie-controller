@@ -1,0 +1,11 @@
+---
+- hosts: all
+  remote_user: pi
+  sudo: yes
+
+  tasks:
+    - name: Copy content from github into the target directories
+      bob: bob
+
+    - name: Install all of the require gems
+      raw: bundler install
