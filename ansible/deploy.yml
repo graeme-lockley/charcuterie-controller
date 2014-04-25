@@ -49,4 +49,7 @@
       file: path=/home/pi/tmp state=absent
 
     - name: Start the webapp
-      service: name=webapp state=restarted enabled=yes pattern="webapp.d"
+      service: name=webapp state=started enabled=yes pattern="webapp.d"
+
+    - name: Ensure that the webapp is automatically started when booting the pi
+      service: name=webapp enabled=yes

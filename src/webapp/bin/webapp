@@ -16,7 +16,7 @@ case "$1" in
     start)
         echo "Starting webapp"
         cd /home/pi/webapp/app/bin
-	./webapp.d &
+	nohup ./webapp.d 2>&1 > /tmp/webapp.log &
         ;;
     stop)
         echo "Stopping webapp"
