@@ -1,5 +1,6 @@
 require 'test/unit'
-require '../lib/ccmodel'
+
+require_relative '../lib/ccmodel'
 
 class ProbeTest < Test::Unit::TestCase
 
