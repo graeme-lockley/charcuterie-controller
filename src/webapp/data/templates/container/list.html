@@ -1,3 +1,7 @@
 <div>
-    <H1>Here we go...</H1>
+    <ul>
+        <% containers.each(function(container) { %>
+        <li> <%= container.get("name") %></li>
+        <% }); %>
+    </ul>
 </div>
