@@ -80,8 +80,8 @@ module CCModel
               TemperatureProbe.new(2, 'Garage Temperature'),
               HumidityProbe.new(3, 'Garage Humidity'),
               Chamber.new(4, 'Primary Fridge', [
-                  TemperatureControl.new(5, 'Fridge Temperature', 15, 2),
-                  HumidityControl.new(6, 'Fridge Humidity', 80, 10)
+                  TemperatureControl.new(5, 'Fridge Temperature', 12, 2),
+                  HumidityControl.new(6, 'Fridge Humidity', 75, 5)
               ])
           ])]
 
