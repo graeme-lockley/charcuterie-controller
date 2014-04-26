@@ -4,7 +4,8 @@ define([
     'models/container'
 ], function (_, Backbone, ContainerModel) {
     var ContainerCollection = Backbone.Collection.extend({
-        model: ContainerModel
+        model: ContainerModel,
+        url: '/api/containers'
     });
 
     return ContainerCollection;
