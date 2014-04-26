@@ -5,15 +5,18 @@ define([
     'collections/containers',
     'text!/templates/container/list.html'
 ], function ($, _, Backbone, ContainersCollection, ContainersListTemplate) {
-    var ProjectListView = Backbone.View.extend({
+    return Backbone.View.extend({
         el: $("#content"),
         initialize: function () {
-            this.collection = new ContainersCollection();
+            var thisThis = this;
+            var xxx = new ContainersCollection();
 
-            var compiledTemplate = _.template(ContainersListTemplate, { collections: this.collection });
-            this.$el.html(compiledTemplate);
+            xxx.fetch({
+                success: function () {
+                    var compiledTemplate = _.template(ContainersListTemplate, { containers: xxx });
+                    thisThis.$el.html(compiledTemplate);
+                }
+            });
         }
     });
-
-    return ProjectListView;
 });
