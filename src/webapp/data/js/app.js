@@ -4,11 +4,11 @@ define([
   'backbone',
   'router'
 ], function($, _, Backbone, Router){
-  var initialize = function() {
-    Router.initialize();
-  }
+    var initialize = function () {
+        Router.initialize();
+    };
 
-  return {
+    return {
     initialize: initialize
   };
 });
