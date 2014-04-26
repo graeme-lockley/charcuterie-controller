@@ -35,11 +35,11 @@ class ThingyTest < Test::Unit::TestCase
     assert_kind_of(CCModel::Chamber, @containers[0].elements[2])
 
     assert_equal('Fridge Temperature', @containers[0].elements[2].elements[0].name)
-    assert_equal(15, @containers[0].elements[2].elements[0].mid)
+    assert_equal(12, @containers[0].elements[2].elements[0].mid)
     assert_equal(2, @containers[0].elements[2].elements[0].variance)
     assert_equal('Fridge Humidity', @containers[0].elements[2].elements[1].name)
-    assert_equal(80, @containers[0].elements[2].elements[1].mid)
-    assert_equal(10, @containers[0].elements[2].elements[1].variance)
+    assert_equal(75, @containers[0].elements[2].elements[1].mid)
+    assert_equal(5, @containers[0].elements[2].elements[1].variance)
   end
 
   def test_that_the_map_was_properly_calculated
