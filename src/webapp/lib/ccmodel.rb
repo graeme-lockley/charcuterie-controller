@@ -12,6 +12,10 @@ module CCModel
     def elements
       []
     end
+
+    def to_map
+      {:class => self.class.name, :id => @id, :name => @name}
+    end
   end
 
   class Probe < Element
@@ -45,6 +49,10 @@ module CCModel
       super(id, name)
       @mid = mid
       @variance = variance
+    end
+
+    def to_map
+      super.merge({:mid => @mid, :variance => @variance})
     end
   end
 
