@@ -13,10 +13,15 @@ end
 
 get '/api/containers' do
   content_type :json
-  CCModel::Thingy.instance.containers.map { |x|
-    {
-        :id => x.id,
-        :name => x.name
-    }
-  }.to_json
+  CCModel::Thingy.instance.containers.map { |x| x.to_map }.to_json
+end
+
+get '/api/containers/:id/elements' do
+  content_type :json
+
+  container = CCModel::Thingy.instance[params[:id].to_i]
+
+  if container.instance_of?(CCModel::Chamber)
+    container.elements.map { |x| x.to_map }.to_json
+  end
 end
