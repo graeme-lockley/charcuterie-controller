@@ -21,6 +21,8 @@ define([
                 var containerListItemView = new ContainersListItemView({model: item});
                 listView.$el.find("ul").append(containerListItemView.render().el);
             });
+
+            listView.$el.find('ul').listview().listview('refresh');
         }
     });
 });
