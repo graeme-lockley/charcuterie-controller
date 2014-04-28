@@ -1,9 +1,10 @@
 define([
     'jquery',
+    'jquerymobile',
     'underscore',
     'backbone',
     'router'
-], function ($, _, Backbone, Router) {
+], function ($, JQueryMobile, _, Backbone, Router) {
     var initialize = function () {
         Router.initialize();
     };
