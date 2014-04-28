@@ -1,0 +1,9 @@
+<a id="back"><%= model.get("name") %></a>
+
+<table>
+    <% model.elements().each(function(element) { %>
+    <tr>
+        <td> <%= element.get("name") %></td>
+    </tr>
+    <% }); %>
+</table>
