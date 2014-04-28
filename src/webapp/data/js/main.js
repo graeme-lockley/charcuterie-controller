@@ -1,7 +1,7 @@
 require.config({
     paths: {
         jquery: '/js/libs/jquery/jquery',
-        jquerymobile: '/js/lib/jquery-mobile/jquery.mobile-1.4.2.js',
+        jquerymobile: '/js/libs/jquery-mobile/jquery.mobile-1.4.2',
         underscore: '/js/libs/underscore/underscore',
         backbone: '/js/libs/backbone/backbone',
         text: '/js/libs/text/text'
