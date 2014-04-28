@@ -91,7 +91,16 @@ module CCModel
                   TemperatureControl.new(5, 'Fridge Temperature', 12, 2),
                   HumidityControl.new(6, 'Fridge Humidity', 75, 5)
               ])
-          ])]
+          ]),
+          Chamber.new(7, 'Garage 2', [
+              TemperatureProbe.new(8, 'Garage Temperature 2'),
+              HumidityProbe.new(9, 'Garage Humidity 2'),
+              Chamber.new(10, 'Primary Fridge 2', [
+                  TemperatureControl.new(11, 'Fridge Temperature 2', 12, 2),
+                  HumidityControl.new(12, 'Fridge Humidity 2', 75, 5)
+              ])
+          ])
+      ]
 
       @map = {}
       populate_map(@containers)
