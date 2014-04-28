@@ -1,9 +1,9 @@
 define([
     'underscore',
     'backbone',
-    'models/container'
-], function (_, Backbone, ContainerModel) {
+    'models/element'
+], function (_, Backbone, ElementModel) {
     return Backbone.Collection.extend({
-        model: ContainerModel
+        model: ElementModel
     });
 });
