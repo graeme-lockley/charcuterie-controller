@@ -9,6 +9,7 @@ define([
         el: "#content",
         render: function () {
             this.$el.html(_.template(ContainersViewTemplate, { model: this.model }));
+            this.$el.find('ul').listview().listview('refresh');
         },
         events: {
             "click #back": "clickBack"

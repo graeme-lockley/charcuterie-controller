@@ -1,9 +1,19 @@
 <a id="back"><%= model.get("name") %></a>
 
-<table>
+<ul data-role="listview" data-inset="true">
     <% model.elements().each(function(element) { %>
-    <tr>
-        <td> <%= element.get("name") %></td>
-    </tr>
+    <% if (element.get('class') == 'CCModel::TemperatureProbe') { %>
+    <li data-role="list-divider"> <%= element.get("name") %> <span class="ui-li-count">Temperature Probe</span></li>
+    <% } else if (element.get('class') == 'CCModel::HumidityProbe') { %>
+    <li data-role="list-divider"> <%= element.get("name") %> <span class="ui-li-count">Humidity Probe</span></li>
+    <% } else { %>
+    <li data-role="list-divider"> <%= element.get("name") %></li>
+    <li class="ui-field-contain">
+        <label for="name2">Type</label>
+        <input type="text" name="name2" id="name2" value="<%= element.get('class') %>" data-clear-btn="true">
+    </li>
+    <% } %>
+
+
     <% }); %>
-</table>
+</ul>
