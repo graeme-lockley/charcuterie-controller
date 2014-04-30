@@ -15,7 +15,7 @@ define([
         },
         elements: function () {
             var elements = this.newElementCollection();
-            elements.url = "/api/containers/" + this.id + "/elements";
+            elements.url = "/api/elements/" + this.id + "/elements";
             elements.fetch({async: false});
             return elements;
         }

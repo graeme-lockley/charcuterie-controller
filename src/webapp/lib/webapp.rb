@@ -16,7 +16,7 @@ get '/api/containers' do
   CCModel::Thingy.instance.containers.map { |x| x.to_map }.to_json
 end
 
-get '/api/containers/:id/elements' do
+get '/api/elements/:id/elements' do
   content_type :json
 
   container = CCModel::Thingy.instance[params[:id].to_i]
