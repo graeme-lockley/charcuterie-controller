@@ -6,7 +6,9 @@ define([
     'text!/templates/container/view.html',
     'views/containers/view_Chamber',
     'views/containers/view_TemperatureProbe',
-    'views/containers/view_HumidityProbe'
+    'views/containers/view_HumidityProbe',
+    'views/containers/view_TemperatureControl',
+    'views/containers/view_HumidityControl'
 ], function ($, _, Backbone, ContainerListView, ContainersViewTemplate) {
     return Backbone.View.extend({
         el: "#content",
