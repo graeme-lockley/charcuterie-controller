@@ -12,11 +12,9 @@ define([
         el: "#content",
         newElementView: function (element) {
             var elementType = element.get("class").substr(9);
-            console.log("views/containers/view_" + elementType);
             var elementView = require("views/containers/view_" + elementType);
 
             return new elementView({model: element});
-
         },
         render: function () {
             var view = this;
