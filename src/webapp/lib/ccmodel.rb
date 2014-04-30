@@ -14,7 +14,7 @@ module CCModel
     end
 
     def to_map
-      {:class => self.class.name, :id => @id, :name => @name}
+      {:class => self.class.name, :id => @id, :name => @name, :ragStatus => 'green'}
     end
   end
 
