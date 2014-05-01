@@ -1,0 +1,16 @@
+<form id="edit_TemperatureProbeForm">
+    <label for="name1">Name:</label>
+    <input type="text" name="name1" id="name1" value="<%= model.get('name') %>" data-clear-btn="true">
+    <label for="flip1">Notifications:</label>
+    <select name="flip1" id="flip1" data-role="slider">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+    </select>
+
+    <div data-role="rangeslider">
+        <label for="range-1a">Rangeslider:</label>
+        <input type="range" name="range-1a" id="range-1a" min="-10" max="50" value="0">
+        <label for="range-1b">Rangeslider:</label>
+        <input type="range" name="range-1b" id="range-1b" min="-10" max="50" value="35">
+    </div>
+</form>

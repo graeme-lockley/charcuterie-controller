@@ -1,8 +1,9 @@
 define([
     'jquery',
     'underscore',
-    'backbone'
-], function ($, _, Backbone) {
+    'backbone',
+    'views/elements/edit_TemperatureProbe'
+], function ($, _, Backbone, EditTemperatureProbeView) {
     return Backbone.View.extend({
         tagName: 'li',
         template: _.template('<a id="#link"><%= item.get("name") %><span class="ui-li-count" style="color: <%= item.get("ragStatus")%>">Temperature Probe</span></a>'),
@@ -14,7 +15,8 @@ define([
             "click": "click"
         },
         click: function () {
-            alert("click: " + this.model.get("name"));
+            var edit = new EditTemperatureProbeView({model: this.model});
+            edit.render();
         }
     });
 });
