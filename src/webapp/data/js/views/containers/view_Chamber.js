@@ -6,7 +6,7 @@ define([
 ], function ($, _, Backbone, ContainerView) {
     return Backbone.View.extend({
         tagName: 'li',
-        template: _.template('<a id="#link"><%= item.get("name") %><span class="ui-li-count" style="color: <%= item.get("ragStatus")%>">Chamber</span></a>'),
+        template: _.template('<a id="#link"><%= item.get("name") %><span class="ui-li-count" style="color: <%= item.get("ragStatus")%>">16&deg;C Off &dash; 83% On</span></a>'),
         render: function () {
             $(this.el).html(this.template({ item: this.model}));
             return this;
