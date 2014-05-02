@@ -10,25 +10,36 @@ define([
 ], function ($, _, Backbone, ElementModel, ContainerView, EditTemperatureProbeFooter, DefaultFooter, EditTemperatureProbeTemplate) {
     return Backbone.View.extend({
         el: "#content",
+        nameField: "#edit_TemperatureProbeForm_name",
+        noticesField: "#edit_TemperatureProbeForm_notices",
+        noticesMinRangeField: "#edit_TemperatureProbeForm_noticesrange_min",
+        noticesMaxRangeField: "#edit_TemperatureProbeForm_noticesrange_max",
+
         render: function () {
             this.$el.html(_.template(EditTemperatureProbeTemplate, { model: this.model }));
-
             $("#edit_TemperatureProbeForm").trigger('create');
+            this.updateTemperatureProbeStatus();
 
             var footer = new EditTemperatureProbeFooter({model: this});
             footer.render();
         },
         events: {
-            "change #edit_TemperatureProbeForm_notices": "log"
+            "change #edit_TemperatureProbeForm_notices": "updateTemperatureProbeStatus"
         },
-        log: function () {
-            console.log("something: " + $("#edit_TemperatureProbeForm_notices").find("option:selected").val());
+        updateTemperatureProbeStatus: function () {
+            if ($(this.noticesField).find("option:selected").val() == "on") {
+                $(this.noticesMinRangeField).slider('enable');
+                $(this.noticesMaxRangeField).slider('enable');
+            } else {
+                $(this.noticesMinRangeField).slider('disable');
+                $(this.noticesMaxRangeField).slider('disable');
+            }
         },
         updateButton: function () {
-            this.model.set("name", this.$("#edit_TemperatureProbeForm_name").val());
-            this.model.set("notices", $("#edit_TemperatureProbeForm_notices").find("option:selected").val() == "on");
-            this.model.get("notices_range").min = $("#edit_TemperatureProbeForm_noticesrange_min").val();
-            this.model.get("notices_range").max = $("#edit_TemperatureProbeForm_noticesrange_max").val();
+            this.model.set("name", $(this.nameField).val());
+            this.model.set("notices", $(this.noticesField).find("option:selected").val() == "on");
+            this.model.get("notices_range").min = $(this.noticesMinRangeField).val();
+            this.model.get("notices_range").max = $(this.noticesMaxRangeField).val();
 
             this.model.save({async: false});
 
