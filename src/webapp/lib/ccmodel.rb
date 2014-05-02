@@ -3,6 +3,7 @@ module CCModel
 
   class Element
     attr_reader :id, :name
+    attr_writer :name
 
     def initialize(id, name)
       @id = id
@@ -16,8 +17,20 @@ module CCModel
     def to_map
       {:class => self.class.name, :id => @id, :name => @name, :ragStatus => 'green'}
     end
+
+    def update_from_json(payload)
+      @name = payload['name']
+    end
   end
 
+  class Range
+    attr_reader :min, :max
+
+    def initialize(min, max)
+      @min = min
+      @max = max
+    end
+  end
   class Probe < Element
     def initialize(id, name)
       super(id, name)
@@ -25,9 +38,25 @@ module CCModel
   end
 
   class TemperatureProbe < Probe
+    attr_accessor :notices, :notices_range
+
     def initialize(id, name)
       super(id, name)
+
+      @notices = false
+      @notices_range = Range.new(1, 39)
     end
+
+    def to_map
+      super.merge({:notices => @notices, :notices_range => {:min => @notices_range.min, :max => @notices_range.max}})
+    end
+
+    def update_from_json(payload)
+      super(payload)
+      @notices = payload['notices']
+      @notices_range = Range.new(payload['notices_range']['min'], payload['notices_range']['max'])
+    end
+
   end
 
   class HumidityProbe < Probe
@@ -80,7 +109,7 @@ module CCModel
   class Thingy
     include Singleton
 
-    attr_reader :containers
+    attr_reader :containers, :map
 
     def initialize
       @containers = [
