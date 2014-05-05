@@ -23,18 +23,6 @@ define([
             var footer = new EditTemperatureProbeFooter({model: this});
             footer.render();
         },
-        events: {
-            "change #edit_TemperatureProbeForm_notices": "updateTemperatureProbeStatus"
-        },
-        updateTemperatureProbeStatus: function () {
-            if ($(this.noticesField).find("option:selected").val() == "on") {
-                $(this.noticesMinRangeField).slider('enable');
-                $(this.noticesMaxRangeField).slider('enable');
-            } else {
-                $(this.noticesMinRangeField).slider('disable');
-                $(this.noticesMaxRangeField).slider('disable');
-            }
-        },
         updateButton: function () {
             this.model.set("name", $(this.nameField).val());
             this.model.set("notices", $(this.noticesField).find("option:selected").val() == "on");
