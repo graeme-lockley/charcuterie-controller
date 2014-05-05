@@ -5,14 +5,6 @@
                data-clear-btn="true">
     </div>
     <div class="ui-field-contain">
-        <label for="edit_TemperatureProbeForm_notices">Notices:</label>
-        <select name="flip1" id="edit_TemperatureProbeForm_notices" data-role="slider">
-            <option value="off"
-            <%= !model.get('notices') ? 'selected="selected"' : '' %> >Off</option>
-            <option value="on"
-            <%= model.get('notices') ? 'selected="selected"' : '' %> >On</option>
-        </select></div>
-    <div class="ui-field-contain">
         <div data-role="rangeslider">
             <label for="edit_TemperatureProbeForm_noticesrange_min">Safe:</label>
             <input type="range" name="range-1a" id="edit_TemperatureProbeForm_noticesrange_min" min="-10" max="50"
@@ -21,5 +13,14 @@
             <input type="range" name="range-1b" id="edit_TemperatureProbeForm_noticesrange_max" min="-10" max="50"
                    value="<%= model.get('notices_range').max %>"/>
         </div>
+    </div>
+    <div class="ui-field-contain">
+        <label for="edit_TemperatureProbeForm_notices">Notification:</label>
+        <select name="flip1" id="edit_TemperatureProbeForm_notices" data-role="slider">
+            <option value="off"
+            <%= !model.get('notices') ? 'selected="selected"' : '' %> >Off</option>
+            <option value="on"
+            <%= model.get('notices') ? 'selected="selected"' : '' %> >On</option>
+        </select>
     </div>
 </form>
